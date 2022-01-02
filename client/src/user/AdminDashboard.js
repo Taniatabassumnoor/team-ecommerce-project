@@ -1,7 +1,19 @@
 import React from 'react';
 import Layout from '../core/Layout';
 import { isAuthenticated } from '../auth';
-import { Link } from 'react-router-dom';
+import { Link as NavLink } from 'react-router-dom';
+import LineStyleIcon from '@material-ui/icons/LineStyle';
+import CategoryIcon from '@material-ui/icons/Category';
+import TrendingUpIcon from '@material-ui/icons/TrendingUp';
+import AddBoxOutlinedIcon from '@material-ui/icons/AddBoxOutlined';
+import PageviewOutlinedIcon from '@material-ui/icons/PageviewOutlined';
+import ControlCameraOutlinedIcon from '@material-ui/icons/ControlCameraOutlined';
+import AccountBoxOutlinedIcon from '@material-ui/icons/AccountBoxOutlined';
+import { Container } from '@material-ui/core';
+import Featuredinfo from '../admin/Featuredinfo';
+import AdminAnalytics from '../admin/AdminAnalytics';
+
+
 
 const AdminDashboard = () => {
   const {
@@ -11,45 +23,78 @@ const AdminDashboard = () => {
   const adminLinks = () => {
     return (
       <div className='card'>
-        <h4 className='card-header'>Admin Links</h4>
+        <div className='adminwrapper'>
+        <h4 style={{color:"#23a6d5",fontWeight:"800"}} className='card-header'>Admin Links</h4>
         <ul className='list-group'>
           <li className='list-group-item'>
-            <Link className='nav-link' to='/create/category'>
+            <NavLink style={{color:"#ee7752",fontSize:"20px",fontWeight:"700"}} className='nav-link' to='/create/category'>
+              <LineStyleIcon className='icons'/>
+              Home
+            </NavLink>
+          </li>
+          <li className='list-group-item'>
+            <NavLink style={{color:"#ee7752",fontSize:"20px",fontWeight:"700"}} className='nav-link' to='/create/category'>
+              <CategoryIcon className='icons'/>
               Create category
-            </Link>
+            </NavLink>
           </li>
           <li className='list-group-item'>
-            <Link className='nav-link' to='/create/product'>
+            <NavLink style={{color:"#ee7752",fontSize:"20px",fontWeight:"700"}} className='nav-link' to='/create/category'>
+              <TrendingUpIcon className='icons'/>
+              Analytics
+            </NavLink>
+          </li>
+          <li className='list-group-item'>
+            <NavLink style={{color:"#ee7752",fontSize:"20px",fontWeight:"700"}} className='nav-link' to='/create/product'>
+               <AddBoxOutlinedIcon className='icons'/>
               Create product
-            </Link>
+            </NavLink>
           </li>
           <li className='list-group-item'>
-            <Link className='nav-link' to='/admin/orders'>
+            <NavLink style={{color:"#ee7752",fontSize:"20px",fontWeight:"700"}} className='nav-link' to='/admin/orders'>
+              <PageviewOutlinedIcon className='icons'/>
               View Orders
-            </Link>
+            </NavLink>
           </li>
           <li className='list-group-item'>
-            <Link className='nav-link' to='/admin/products'>
+            <NavLink style={{color:"#ee7752",fontSize:"20px",fontWeight:"700"}} className='nav-link' to='/admin/orders'>
+            <AccountBoxOutlinedIcon className='icons'/>
+            Make Admin
+            </NavLink>
+          </li>
+          <li className='list-group-item'>
+            <NavLink style={{color:"#ee7752",fontSize:"20px",fontWeight:"700"}} className='nav-link' to='/admin/products'>
+              <ControlCameraOutlinedIcon className='icons'/>
               Manage Products
-            </Link>
+            </NavLink>
           </li>
         </ul>
+        </div>
       </div>
     );
   };
 
   const adminInfo = () => {
     return (
-      <div className='card mb-5'>
-        <h3 className='card-header'>User information</h3>
-        <ul className='list-group'>
-          <li className='list-group-item'>{name}</li>
-          <li className='list-group-item'>{email}</li>
-          <li className='list-group-item'>
+      <Container>
+        <Featuredinfo></Featuredinfo> <br /> 
+        <AdminAnalytics></AdminAnalytics> <br />
+       
+        
+        <div style={{margin:"0 auto"}} className='card mb-5'>
+        <h3 style={{margin:"0 auto",color:"#23a6d5",fontWeight:"800"}} className='card-header'>User information</h3>
+        <ul  className='list-group'>
+          <li style={{padding: "20px",fontSize:"20px",color:"#ee7752",fontWeight:"600"}} className='list-group-item'>{name}</li>
+          <li style={{padding: "20px",fontSize:"20px",color:"#ee7752",fontWeight:"600"}} className='list-group-item'>{email}</li>
+          <li style={{padding: "20px",fontSize:"20px",color:"#ee7752",fontWeight:"600"}} className='list-group-item'>
             {role === 1 ? 'Admin' : 'Registered user'}
           </li>
+          
         </ul>
+        
       </div>
+      
+      </Container>
     );
   };
 
